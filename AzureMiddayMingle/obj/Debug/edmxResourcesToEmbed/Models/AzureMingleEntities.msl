@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="MiddayMingleAzureModelStoreContainer" CdmEntityContainer="MiddayMingleAzureEntities">
+    <EntitySetMapping Name="Companies">
+      <EntityTypeMapping TypeName="MiddayMingleAzureModel.Company">
+        <MappingFragment StoreEntitySet="Company">
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="CompanyName" ColumnName="CompanyName" />
+          <ScalarProperty Name="ZipCode" ColumnName="ZipCode" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="Employees">
+      <EntityTypeMapping TypeName="MiddayMingleAzureModel.Employee">
+        <MappingFragment StoreEntitySet="Employee">
+          <ScalarProperty Name="EmployeeID" ColumnName="EmployeeID" />
+          <ScalarProperty Name="CompanyID" ColumnName="CompanyID" />
+          <ScalarProperty Name="EmployeeName" ColumnName="EmployeeName" />
+          <ScalarProperty Name="EmployeeEmail" ColumnName="EmployeeEmail" />
+          <ScalarProperty Name="Position" ColumnName="Position" />
+          <ScalarProperty Name="Interest1" ColumnName="Interest1" />
+          <ScalarProperty Name="Interest2" ColumnName="Interest2" />
+          <ScalarProperty Name="Interest3" ColumnName="Interest3" />
+          <ScalarProperty Name="Cuisine1" ColumnName="Cuisine1" />
+          <ScalarProperty Name="Cuisine2" ColumnName="Cuisine2" />
+          <ScalarProperty Name="Cuisine3" ColumnName="Cuisine3" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

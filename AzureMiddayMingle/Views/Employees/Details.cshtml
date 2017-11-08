@@ -1,0 +1,98 @@
+﻿@model AzureMiddayMingle.Models.Employee
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Employee</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeEmail)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeEmail)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Position)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Position)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Interest1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Interest1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Interest2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Interest2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Interest3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Interest3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cuisine1)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cuisine1)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cuisine2)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cuisine2)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Cuisine3)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Cuisine3)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Company.CompanyName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Company.CompanyName)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edit", "Edit", new { id = Model.EmployeeID }) |
+    @Html.ActionLink("Back to List", "Index")
+</p>
