@@ -41,6 +41,24 @@ namespace AzureMiddayMingle.Controllers
             return View();
         }
 
+        public ActionResult FetchProfile()
+        {
+            return View();
+        }
+
+        public ActionResult MyProfile(String userEmail)
+        {
+            MiddayMingleAzureEntities db = new MiddayMingleAzureEntities();
+
+            var employees = from e in db.Employees
+                           where e.EmployeeEmail.Contains(userEmail)
+                           select e;
+
+            
+
+            return View(employees.ToList());
+        }
+
         public ActionResult Success(Employee e)
         {
             EmployeesController ec = new EmployeesController();

@@ -323,6 +323,8 @@
     <Content Include="Views\Home\Suggestions.cshtml" />
     <Content Include="Views\Home\CreateProfile.cshtml" />
     <Content Include="Views\Home\Success.cshtml" />
+    <Content Include="Views\Home\FetchProfile.cshtml" />
+    <Content Include="Views\Home\MyProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
