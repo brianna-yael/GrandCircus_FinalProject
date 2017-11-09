@@ -9,77 +9,7 @@
 {
     @Html.AntiForgeryToken()
     <h4>Create a new account.</h4>
-    <form id="form" name="form" method="post" action="Success" class="form-group">
-        <p>
-            <label for="name">Name</label>
-            <input type="text" firstname="name2" id="name" />
-            <label for="company"> Company</label>
-            <select name="company" id="company">
-                <option value="steelcase">Steelcase</option>
-                <option value="herman miller">Herman Miller</option>
-                <option value="amway">Amway</option>
-                <option value="spectrum">Spectrum Health</option>
-            </select>
-        </p>
-        <p>
-            <label for="position">Position</label>
-            <input type="text" name="position" id="position" />
-        </p>
-        <p>
-            <label>
-                Interests (Choose 3)<br />
-                <input type="checkbox" name="Interests" value="Music" id="Interests_0" />
-                Music
-            </label>
-            <br />
-            <label>
-                <input type="checkbox" name="Interests" value="Cooking" id="Interests_1" />
-                Cooking
-            </label>
-            <br />
-            <label>
-                <input type="checkbox" name="Interests" value="Technology" id="Interests_2" />
-                Tech
-            </label>
-            <br />
-            <label>
-                <input type="checkbox" name="Interests" value="Outdoors" id="Interests_3" />
-                Outdoors
-            </label>
-            <br />
-            <label>
-                <input type="checkbox" name="Interests" value="Sports" id="Interests_4" />
-                Sports
-            </label>
-        </p>
-        <div class="cuisine">
-            <p>
-                <label>
-                    Cuisine (Choose 3)<br />
-                    <input type="checkbox" name="Interests_" value="Ethiopian" id="Interests_5" />
-                    Ethiopian
-                </label>
-                <br />
-                <label>
-                    <input type="checkbox" name="Interests_" value="Mediterranean" id="Interests_6" />
-                    Mediterranean
-                </label>
-                <br />
-                <label>
-                    <input type="checkbox" name="Interests_" value="Mexican" id="Interests_7" />
-                    Mexican
-                </label>
-                <br />
-                <label>
-                    <input type="checkbox" name="Interests_" value="Italian" id="Interests_8" />
-                    Italian
-                </label>
-                <br />
-                <label>
-                    <input type="checkbox" name="Interests_" value="Chinese" id="Interests_9" />
-                    Chinese
-                </label>
-                <br />
+   
                 @Html.ValidationSummary("", new { @class = "text-danger" })
                 <div class="form-group">
                     @Html.LabelFor(m => m.Email, new { @class = "col-md-2 control-label" })
@@ -100,8 +30,8 @@
                     </div>
                 </div>
                 <br />
-            </p>
-        </div>
+
+
 
 
         <hr />
@@ -110,7 +40,7 @@
                 <input type="submit" class="btn btn-default" value="Register" />
             </div>
         </div>
-    </form>
+  
 }
 
 @section Scripts {

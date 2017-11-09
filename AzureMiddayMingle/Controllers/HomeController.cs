@@ -4,6 +4,10 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using AzureMiddayMingle.Models;
+using System.Configuration;
+using System.Data.SqlClient;
+using Foursquare.Api;
+
 
 namespace AzureMiddayMingle.Controllers
 {
@@ -31,7 +35,12 @@ namespace AzureMiddayMingle.Controllers
         public ActionResult Suggestions()
         {
             return View();
-        }       
+        }     
+        
+        public ActionResult CreateProfile()
+        {
+            return View();
+        }
 
         public ActionResult Success(Employee e)
         {
@@ -39,6 +48,12 @@ namespace AzureMiddayMingle.Controllers
             ec.Create(e);
 
             return View();
+        }
+
+        public ActionResult GetData()
+        {
+
+            return View("Data");
         }
     }
 }
