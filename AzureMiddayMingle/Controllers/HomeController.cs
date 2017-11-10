@@ -46,13 +46,16 @@ namespace AzureMiddayMingle.Controllers
             return View();
         }
 
-        public ActionResult MyProfile(String userEmail)
+        public ActionResult MyProfile(Employee e)
         {
+            EmployeesController ec = new EmployeesController();
+            ec.Create(e);
+
             MiddayMingleAzureEntities db = new MiddayMingleAzureEntities();
 
-            var employees = from e in db.Employees
-                           where e.EmployeeEmail.Contains(userEmail)
-                           select e;
+            var employees = from f in db.Employees
+                           where f.EmployeeEmail.Contains(e.EmployeeEmail)
+                           select f;
 
             
 
@@ -63,6 +66,12 @@ namespace AzureMiddayMingle.Controllers
         {
             EmployeesController ec = new EmployeesController();
             ec.Create(e);
+
+            MiddayMingleAzureEntities db = new MiddayMingleAzureEntities();
+
+            var employees = from f in db.Employees
+                            where f.EmployeeEmail.Contains(e.EmployeeEmail)
+                            select f;
 
             return View();
         }
