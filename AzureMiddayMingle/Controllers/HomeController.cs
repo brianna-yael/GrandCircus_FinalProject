@@ -16,8 +16,6 @@ namespace AzureMiddayMingle.Controllers
 {
     public class HomeController : Controller
     {
-        Employee me = new Employee();
-
         public ActionResult Index()
         {
             return View();
@@ -68,7 +66,7 @@ namespace AzureMiddayMingle.Controllers
         {
             EmployeesController ec = new EmployeesController();
             ec.Create(e);
-            me = e;
+            Session["EmployeeID"] = e.EmployeeID;
             MiddayMingleAzureEntities db = new MiddayMingleAzureEntities();
 
             var employees = from f in db.Employees
@@ -80,7 +78,9 @@ namespace AzureMiddayMingle.Controllers
 
         public ActionResult Suggestions()
         {
-            if (me.Cuisine1 == "Ethiopian")
+            MiddayMingleAzureEntities db = new MiddayMingleAzureEntities();
+            Employee e = db.Employees.Find(Session["EmployeeID"]);
+            if (e.Cuisine1 == "Ethiopian")
             {
                 HttpWebRequest request = WebRequest.CreateHttp("https://api.foursquare.com/v2/venues/search?client_id=GXLVM2YRQLY4BF5YAY2QN1UVDBDKYU0IL5420SJTGTI4RZ5T&client_secret=12OG4YUDEFBX32OFGYJNUHWOZUPV2JLKZG2RNKU1FPFJNV5H&intent=checkin&near=Grand%20Rapids&categoryId=4bf58dd8d48988d10a941735&radius=8047&v=20171109");
                 request.UserAgent = @"User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36";
@@ -100,7 +100,7 @@ namespace AzureMiddayMingle.Controllers
 
                 return View();
             }
-            else if (me.Cuisine1 == "Chinese")
+            else if (e.Cuisine1 == "Chinese")
             {
                 HttpWebRequest request = WebRequest.CreateHttp("https://api.foursquare.com/v2/venues/search?client_id=GXLVM2YRQLY4BF5YAY2QN1UVDBDKYU0IL5420SJTGTI4RZ5T&client_secret=12OG4YUDEFBX32OFGYJNUHWOZUPV2JLKZG2RNKU1FPFJNV5H&intent=checkin&near=Grand%20Rapids&categoryId=4bf58dd8d48988d145941735&radius=8047&v=20171109");
                 request.UserAgent = @"User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36";
@@ -120,7 +120,7 @@ namespace AzureMiddayMingle.Controllers
 
                 return View();
             }
-            else if (me.Cuisine1 == "Mediterranean")
+            else if (e.Cuisine1 == "Mediterranean")
             {
                 HttpWebRequest request = WebRequest.CreateHttp("https://api.foursquare.com/v2/venues/search?client_id=GXLVM2YRQLY4BF5YAY2QN1UVDBDKYU0IL5420SJTGTI4RZ5T&client_secret=12OG4YUDEFBX32OFGYJNUHWOZUPV2JLKZG2RNKU1FPFJNV5H&intent=checkin&near=Grand%20Rapids&categoryId=4bf58dd8d48988d1c0941735&radius=8047&v=20171109");
                 request.UserAgent = @"User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36";
@@ -141,7 +141,7 @@ namespace AzureMiddayMingle.Controllers
                 return View();
             }
 
-            else if (me.Cuisine1 == "Mexican")
+            else if (e.Cuisine1 == "Mexican")
             {
                 HttpWebRequest request = WebRequest.CreateHttp("https://api.foursquare.com/v2/venues/search?client_id=GXLVM2YRQLY4BF5YAY2QN1UVDBDKYU0IL5420SJTGTI4RZ5T&client_secret=12OG4YUDEFBX32OFGYJNUHWOZUPV2JLKZG2RNKU1FPFJNV5H&intent=checkin&near=Grand%20Rapids&categoryId=4bf58dd8d48988d1c1941735&radius=8047&v=20171109");
                 request.UserAgent = @"User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36";
@@ -162,7 +162,7 @@ namespace AzureMiddayMingle.Controllers
                 return View();
             }
 
-            else if (me.Cuisine1 == "Italian")
+            else if (e.Cuisine1 == "Italian")
             {
                 HttpWebRequest request = WebRequest.CreateHttp("https://api.foursquare.com/v2/venues/search?client_id=GXLVM2YRQLY4BF5YAY2QN1UVDBDKYU0IL5420SJTGTI4RZ5T&client_secret=12OG4YUDEFBX32OFGYJNUHWOZUPV2JLKZG2RNKU1FPFJNV5H&intent=checkin&near=Grand%20Rapids&categoryId=4bf58dd8d48988d110941735&radius=8047&v=20171109");
                 request.UserAgent = @"User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36";
