@@ -57,29 +57,15 @@ namespace AzureMiddayMingle.Controllers
                             where f.EmployeeEmail.Contains(e.EmployeeEmail)
                             select f;
 
-
-
+            int me = db.Employees.ToList().Count();
+            Session["EmployeeID"] = me;
             return View(employees.ToList());
-        }
-
-        public ActionResult Success(Employee e)
-        {
-            EmployeesController ec = new EmployeesController();
-            ec.Create(e);
-            Session["EmployeeID"] = e.EmployeeID;
-            MiddayMingleAzureEntities db = new MiddayMingleAzureEntities();
-
-            var employees = from f in db.Employees
-                            where f.EmployeeEmail.Contains(e.EmployeeEmail)
-                            select f;
-
-            return View();
         }
 
         public ActionResult Suggestions()
         {
             MiddayMingleAzureEntities db = new MiddayMingleAzureEntities();
-            Employee e = db.Employees.Find(Session["EmployeeID"]);
+            Employee e = db.Employees.Find(Convert.ToInt32(Session["EmployeeID"]));
             if (e.Cuisine1 == "Ethiopian")
             {
                 HttpWebRequest request = WebRequest.CreateHttp("https://api.foursquare.com/v2/venues/search?client_id=GXLVM2YRQLY4BF5YAY2QN1UVDBDKYU0IL5420SJTGTI4RZ5T&client_secret=12OG4YUDEFBX32OFGYJNUHWOZUPV2JLKZG2RNKU1FPFJNV5H&intent=checkin&near=Grand%20Rapids&categoryId=4bf58dd8d48988d10a941735&radius=8047&v=20171109");
