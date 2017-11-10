@@ -16,6 +16,8 @@ namespace AzureMiddayMingle.Controllers
 {
     public class HomeController : Controller
     {
+        Employee me = new Employee();
+
         public ActionResult Index()
         {
             return View();
@@ -34,8 +36,8 @@ namespace AzureMiddayMingle.Controllers
 
             return View();
         }
-    
-        
+
+
         public ActionResult CreateProfile()
         {
             return View();
@@ -54,10 +56,10 @@ namespace AzureMiddayMingle.Controllers
             MiddayMingleAzureEntities db = new MiddayMingleAzureEntities();
 
             var employees = from f in db.Employees
-                           where f.EmployeeEmail.Contains(e.EmployeeEmail)
-                           select f;
+                            where f.EmployeeEmail.Contains(e.EmployeeEmail)
+                            select f;
 
-            
+
 
             return View(employees.ToList());
         }
@@ -66,7 +68,7 @@ namespace AzureMiddayMingle.Controllers
         {
             EmployeesController ec = new EmployeesController();
             ec.Create(e);
-
+            me = e;
             MiddayMingleAzureEntities db = new MiddayMingleAzureEntities();
 
             var employees = from f in db.Employees
@@ -78,18 +80,113 @@ namespace AzureMiddayMingle.Controllers
 
         public ActionResult Suggestions()
         {
-            HttpWebRequest request = WebRequest.CreateHttp("https://api.foursquare.com/v2/venues/search?client_id=GXLVM2YRQLY4BF5YAY2QN1UVDBDKYU0IL5420SJTGTI4RZ5T&client_secret=12OG4YUDEFBX32OFGYJNUHWOZUPV2JLKZG2RNKU1FPFJNV5H&intent=checkin&near=Grand%20Rapids&categoryId=4bf58dd8d48988d10a941735&radius=8047&v=20171109");
-            request.UserAgent = @"User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36";
-            HttpWebResponse response = (HttpWebResponse)request.GetResponse();
-            StreamReader rd = new StreamReader(response.GetResponseStream());
-            String ApiText = rd.ReadToEnd();
-            JObject o = JObject.Parse(ApiText);
-        
-            string input = o["response"]["venues"][0]["name"].ToString();
-               
-            ViewBag.SuggestedRestaurants = input;
+            if (me.Cuisine1 == "Ethiopian")
+            {
+                HttpWebRequest request = WebRequest.CreateHttp("https://api.foursquare.com/v2/venues/search?client_id=GXLVM2YRQLY4BF5YAY2QN1UVDBDKYU0IL5420SJTGTI4RZ5T&client_secret=12OG4YUDEFBX32OFGYJNUHWOZUPV2JLKZG2RNKU1FPFJNV5H&intent=checkin&near=Grand%20Rapids&categoryId=4bf58dd8d48988d10a941735&radius=8047&v=20171109");
+                request.UserAgent = @"User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36";
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                StreamReader rd = new StreamReader(response.GetResponseStream());
+                String ApiText = rd.ReadToEnd();
+                JObject o = JObject.Parse(ApiText);
+                string restaurants = string.Empty;
 
-            return View();
+                for (int i = 0; i < o["response"]["venues"].Count(); i++)
+                {
+                    string input = o["response"]["venues"][i]["name"].ToString();
+                    restaurants = restaurants + input;
+                }
+
+                ViewBag.SuggestedRestaurants = restaurants;
+
+                return View();
+            }
+            else if (me.Cuisine1 == "Chinese")
+            {
+                HttpWebRequest request = WebRequest.CreateHttp("https://api.foursquare.com/v2/venues/search?client_id=GXLVM2YRQLY4BF5YAY2QN1UVDBDKYU0IL5420SJTGTI4RZ5T&client_secret=12OG4YUDEFBX32OFGYJNUHWOZUPV2JLKZG2RNKU1FPFJNV5H&intent=checkin&near=Grand%20Rapids&categoryId=4bf58dd8d48988d145941735&radius=8047&v=20171109");
+                request.UserAgent = @"User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36";
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                StreamReader rd = new StreamReader(response.GetResponseStream());
+                String ApiText = rd.ReadToEnd();
+                JObject o = JObject.Parse(ApiText);
+                string restaurants = string.Empty;
+
+                for (int i = 0; i < o["response"]["venues"].Count(); i++)
+                {
+                    string input = o["response"]["venues"][i]["name"].ToString();
+                    restaurants = restaurants + input;
+                }
+
+                ViewBag.SuggestedRestaurants = restaurants;
+
+                return View();
+            }
+            else if (me.Cuisine1 == "Mediterranean")
+            {
+                HttpWebRequest request = WebRequest.CreateHttp("https://api.foursquare.com/v2/venues/search?client_id=GXLVM2YRQLY4BF5YAY2QN1UVDBDKYU0IL5420SJTGTI4RZ5T&client_secret=12OG4YUDEFBX32OFGYJNUHWOZUPV2JLKZG2RNKU1FPFJNV5H&intent=checkin&near=Grand%20Rapids&categoryId=4bf58dd8d48988d1c0941735&radius=8047&v=20171109");
+                request.UserAgent = @"User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36";
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                StreamReader rd = new StreamReader(response.GetResponseStream());
+                String ApiText = rd.ReadToEnd();
+                JObject o = JObject.Parse(ApiText);
+                string restaurants = string.Empty;
+
+                for (int i = 0; i < o["response"]["venues"].Count(); i++)
+                {
+                    string input = o["response"]["venues"][i]["name"].ToString();
+                    restaurants = restaurants + input;
+                }
+
+                ViewBag.SuggestedRestaurants = restaurants;
+
+                return View();
+            }
+
+            else if (me.Cuisine1 == "Mexican")
+            {
+                HttpWebRequest request = WebRequest.CreateHttp("https://api.foursquare.com/v2/venues/search?client_id=GXLVM2YRQLY4BF5YAY2QN1UVDBDKYU0IL5420SJTGTI4RZ5T&client_secret=12OG4YUDEFBX32OFGYJNUHWOZUPV2JLKZG2RNKU1FPFJNV5H&intent=checkin&near=Grand%20Rapids&categoryId=4bf58dd8d48988d1c1941735&radius=8047&v=20171109");
+                request.UserAgent = @"User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36";
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                StreamReader rd = new StreamReader(response.GetResponseStream());
+                String ApiText = rd.ReadToEnd();
+                JObject o = JObject.Parse(ApiText);
+                string restaurants = string.Empty;
+
+                for (int i = 0; i < o["response"]["venues"].Count(); i++)
+                {
+                    string input = o["response"]["venues"][i]["name"].ToString();
+                    restaurants = restaurants + input;
+                }
+
+                ViewBag.SuggestedRestaurants = restaurants;
+
+                return View();
+            }
+
+            else if (me.Cuisine1 == "Italian")
+            {
+                HttpWebRequest request = WebRequest.CreateHttp("https://api.foursquare.com/v2/venues/search?client_id=GXLVM2YRQLY4BF5YAY2QN1UVDBDKYU0IL5420SJTGTI4RZ5T&client_secret=12OG4YUDEFBX32OFGYJNUHWOZUPV2JLKZG2RNKU1FPFJNV5H&intent=checkin&near=Grand%20Rapids&categoryId=4bf58dd8d48988d110941735&radius=8047&v=20171109");
+                request.UserAgent = @"User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36";
+                HttpWebResponse response = (HttpWebResponse)request.GetResponse();
+                StreamReader rd = new StreamReader(response.GetResponseStream());
+                String ApiText = rd.ReadToEnd();
+                JObject o = JObject.Parse(ApiText);
+                string restaurants = string.Empty;
+
+                for (int i = 0; i < o["response"]["venues"].Count(); i++)
+                {
+                    string input = o["response"]["venues"][i]["name"].ToString();
+                    restaurants = restaurants + input;
+                }
+
+                ViewBag.SuggestedRestaurants = restaurants;
+
+                return View();
+            }
+
+            else
+            {
+                return View();
+            }
         }
     }
 }
