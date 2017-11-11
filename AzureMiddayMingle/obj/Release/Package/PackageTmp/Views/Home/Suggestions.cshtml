@@ -1,12 +1,18 @@
 ﻿@{
     ViewBag.Title = "Suggestions";
 }
-<h2>@ViewBag.Title.</h2>
+<h1>@ViewBag.Title</h1>
+<h4>@ViewBag.Error</h4>
 <h3>@ViewBag.Message</h3>
 
-<address>
-    One Microsoft Way<br />
-    Redmond, WA 98052-6399<br />
-    <abbr title="Phone">P:</abbr>
-    425.555.0100
-</address>
+
+<h2>@ViewBag.MatchName</h2>
+<h4>@ViewBag.MatchPosition</h4>
+<h4>@ViewBag.MatchInterest</h4>
+<h4>@ViewBag.MatchCuisine</h4>
+<h4>@ViewBag.MatchEmail</h4>
+
+<h2>You should check out these restaurants for lunch together:</h2>
+<h4>@ViewBag.SuggestedRestaurants </h4>
+
+@* Random generator for opposite matches. To generate different matches instead of same person each time. *@

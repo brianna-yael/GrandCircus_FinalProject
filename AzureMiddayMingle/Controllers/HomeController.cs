@@ -67,7 +67,6 @@ namespace AzureMiddayMingle.Controllers
             Employee myMatch = null;
             foreach (Employee emp in allEmployees)
             {
-                //(emp.CompanyID == e.CompanyID) &&
                 if ((emp.CompanyID == e.CompanyID) && (emp.Interest1 == e.Interest1) && (emp.Cuisine1 == e.Cuisine1) && (emp.EmployeeID != e.EmployeeID))
                 {
                     myMatch = emp;
@@ -85,9 +84,14 @@ namespace AzureMiddayMingle.Controllers
             Employee e = db.Employees.Find(Convert.ToInt32(Session["EmployeeID"]));
 
             //Finding employee match
-            Employee myMatch;            
+            Employee myMatch = null;
+            if (e == null)
+            {
+                ViewBag.Error = "You must make a profile to find your suggested restaurants.";
+                return View();
+            }
             myMatch = GetEmployeeMatch();
-            if(myMatch == null)
+            if (myMatch == null)
             {
                 ViewBag.MatchName = "I'm sorry, no one has signed up yet who is a match for you. Please try again at a later date.";
             }
