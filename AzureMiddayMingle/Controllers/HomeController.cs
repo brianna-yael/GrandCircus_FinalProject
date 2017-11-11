@@ -41,9 +41,8 @@ namespace AzureMiddayMingle.Controllers
             return View();
         }
 
-        public ActionResult Login(String userEmail)
+        public ActionResult Login()
         {
-
             return View();
         }
 
@@ -126,10 +125,12 @@ namespace AzureMiddayMingle.Controllers
             Employee myMatch = null;
             if (e == null)
             {
-                ViewBag.Error = "You must make a profile to find your suggested restaurants.";
+                ViewBag.Error = "You must make a profile to find your suggestions.";
                 return View();
             }
+
             myMatch = GetEmployeeMatch();
+
             if (myMatch == null)
             {
                 ViewBag.MatchName = "I'm sorry, no one has signed up yet who is a match for you. Please try again at a later date.";
