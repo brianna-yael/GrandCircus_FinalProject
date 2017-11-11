@@ -57,10 +57,50 @@ namespace AzureMiddayMingle.Controllers
             return View(employees.ToList());
         }
 
+        public Employee GetEmployeeMatch()
+        {
+            MiddayMingleAzureEntities db = new MiddayMingleAzureEntities();
+            Employee e = db.Employees.Find(Convert.ToInt32(Session["EmployeeID"]));
+
+            //Finding employee match
+            List<Employee> allEmployees = db.Employees.ToList();
+            Employee myMatch = null;
+            foreach (Employee emp in allEmployees)
+            {
+                //(emp.CompanyID == e.CompanyID) &&
+                if ((emp.CompanyID == e.CompanyID) && (emp.Interest1 == e.Interest1) && (emp.Cuisine1 == e.Cuisine1) && (emp.EmployeeID != e.EmployeeID))
+                {
+                    myMatch = emp;
+                    return myMatch;
+                }              
+            }
+
+            return null;
+            
+        }
+
         public ActionResult Suggestions()
         {
             MiddayMingleAzureEntities db = new MiddayMingleAzureEntities();
             Employee e = db.Employees.Find(Convert.ToInt32(Session["EmployeeID"]));
+
+            //Finding employee match
+            Employee myMatch;            
+            myMatch = GetEmployeeMatch();
+            if(myMatch == null)
+            {
+                ViewBag.MatchName = "I'm sorry, no one has signed up yet who is a match for you. Please try again at a later date.";
+            }
+            else
+            {
+                ViewBag.MatchName = "Your Match is " + myMatch.EmployeeName;
+                ViewBag.MatchPosition = "Position: " + myMatch.Position;
+                ViewBag.MatchInterest = "Like you, they are also interested in " + myMatch.Interest1;
+                ViewBag.MatchCuisine = "You both enjoy eating " + myMatch.Cuisine1;
+                ViewBag.MatchEmail = "You can contact them at " + myMatch.EmployeeEmail;
+            }
+
+            //Suggesting Restaurants
             if (e == null)
             {
                 ViewBag.Error = "You must make a profile to find your suggested restaurants.";
@@ -79,7 +119,7 @@ namespace AzureMiddayMingle.Controllers
                 for (int i = 0; i < o["response"]["venues"].Count(); i++)
                 {
                     string input = o["response"]["venues"][i]["name"].ToString();
-                    restaurants = restaurants + input;
+                    restaurants = restaurants + ", " + input;
                 }
 
                 ViewBag.SuggestedRestaurants = restaurants;
@@ -99,7 +139,7 @@ namespace AzureMiddayMingle.Controllers
                 for (int i = 0; i < o["response"]["venues"].Count(); i++)
                 {
                     string input = o["response"]["venues"][i]["name"].ToString();
-                    restaurants = restaurants + input;
+                    restaurants = restaurants + ", " + input;
                 }
 
                 ViewBag.SuggestedRestaurants = restaurants;
@@ -119,7 +159,7 @@ namespace AzureMiddayMingle.Controllers
                 for (int i = 0; i < o["response"]["venues"].Count(); i++)
                 {
                     string input = o["response"]["venues"][i]["name"].ToString();
-                    restaurants = restaurants + input;
+                    restaurants = restaurants + ", " +  input;
                 }
 
                 ViewBag.SuggestedRestaurants = restaurants;
@@ -140,7 +180,7 @@ namespace AzureMiddayMingle.Controllers
                 for (int i = 0; i < o["response"]["venues"].Count(); i++)
                 {
                     string input = o["response"]["venues"][i]["name"].ToString();
-                    restaurants = restaurants + input;
+                    restaurants = restaurants + ", " + input;
                 }
 
                 ViewBag.SuggestedRestaurants = restaurants;
@@ -161,7 +201,7 @@ namespace AzureMiddayMingle.Controllers
                 for (int i = 0; i < o["response"]["venues"].Count(); i++)
                 {
                     string input = o["response"]["venues"][i]["name"].ToString();
-                    restaurants = restaurants + input;
+                    restaurants = restaurants + ", " + input;
                 }
 
                 ViewBag.SuggestedRestaurants = restaurants;
