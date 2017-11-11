@@ -41,11 +41,6 @@ namespace AzureMiddayMingle.Controllers
             return View();
         }
 
-        public ActionResult FetchProfile()
-        {
-            return View();
-        }
-
         public ActionResult MyProfile(Employee e)
         {
             EmployeesController ec = new EmployeesController();
@@ -57,8 +52,8 @@ namespace AzureMiddayMingle.Controllers
                             where f.EmployeeEmail.Contains(e.EmployeeEmail)
                             select f;
 
-            int me = db.Employees.ToList().Count();
-            Session["EmployeeID"] = me;
+            Employee me = db.Employees.ToList().Last();
+            Session["EmployeeID"] = me.EmployeeID;
             return View(employees.ToList());
         }
 
@@ -66,7 +61,12 @@ namespace AzureMiddayMingle.Controllers
         {
             MiddayMingleAzureEntities db = new MiddayMingleAzureEntities();
             Employee e = db.Employees.Find(Convert.ToInt32(Session["EmployeeID"]));
-            if (e.Cuisine1 == "Ethiopian")
+            if (e == null)
+            {
+                ViewBag.Error = "You must make a profile to find your suggested restaurants.";
+                return View();
+            }
+            else if (e.Cuisine1 == "Ethiopian")
             {
                 HttpWebRequest request = WebRequest.CreateHttp("https://api.foursquare.com/v2/venues/search?client_id=GXLVM2YRQLY4BF5YAY2QN1UVDBDKYU0IL5420SJTGTI4RZ5T&client_secret=12OG4YUDEFBX32OFGYJNUHWOZUPV2JLKZG2RNKU1FPFJNV5H&intent=checkin&near=Grand%20Rapids&categoryId=4bf58dd8d48988d10a941735&radius=8047&v=20171109");
                 request.UserAgent = @"User-Agent: Mozilla/5.0 (Windows NT 10.0; WOW64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/53.0.2785.116 Safari/537.36";

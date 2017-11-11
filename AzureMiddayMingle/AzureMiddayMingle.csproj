@@ -322,7 +322,6 @@
     <Content Include="Views\Employees\Index.cshtml" />
     <Content Include="Views\Home\Suggestions.cshtml" />
     <Content Include="Views\Home\CreateProfile.cshtml" />
-    <Content Include="Views\Home\FetchProfile.cshtml" />
     <Content Include="Views\Home\MyProfile.cshtml" />
   </ItemGroup>
   <ItemGroup>

@@ -513,3 +513,9 @@ C:\Users\bjm37\Documents\Visual Studio 2017\Projects\FinalFinalProject\AzureMidd
 C:\Users\bjm37\Documents\Visual Studio 2017\Projects\FinalFinalProject\AzureMiddayMingle\obj\Debug\AzureMiddayMingle.csproj.CoreCompileInputs.cache
 C:\Users\bjm37\Documents\Visual Studio 2017\Projects\FinalFinalProject\AzureMiddayMingle\obj\Debug\AzureMiddayMingle.dll
 C:\Users\bjm37\Documents\Visual Studio 2017\Projects\FinalFinalProject\AzureMiddayMingle\obj\Debug\AzureMiddayMingle.pdb
+C:\Users\Jonaca Hudson\source\repos\MingleAgain\AzureMiddayMingle\bin\Foursquare.Api.dll
+C:\Users\Jonaca Hudson\source\repos\MingleAgain\AzureMiddayMingle\bin\System.Net.Http.Extensions.dll
+C:\Users\Jonaca Hudson\source\repos\MingleAgain\AzureMiddayMingle\bin\System.Net.Http.Primitives.dll
+C:\Users\Jonaca Hudson\source\repos\MingleAgain\AzureMiddayMingle\bin\System.Net.Http.Extensions.xml
+C:\Users\Jonaca Hudson\source\repos\MingleAgain\AzureMiddayMingle\bin\System.Net.Http.Primitives.xml
+C:\Users\Jonaca Hudson\source\repos\MingleAgain\AzureMiddayMingle\obj\Debug\AzureMiddayMingle.csproj.App.config
