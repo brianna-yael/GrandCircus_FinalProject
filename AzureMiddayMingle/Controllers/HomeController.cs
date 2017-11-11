@@ -41,6 +41,45 @@ namespace AzureMiddayMingle.Controllers
             return View();
         }
 
+        public ActionResult Login(String userEmail)
+        {
+
+            return View();
+        }
+
+        public ActionResult ViewMyProfile(String userEmail)
+        {
+
+            MiddayMingleAzureEntities db = new MiddayMingleAzureEntities();
+            Employee me = db.Employees.Find(Convert.ToInt32(Session["EmployeeID"]));
+            if (me == null)
+            {
+                List<Employee> allEmployees = db.Employees.ToList();
+                Employee currentUser = new Employee();
+
+                foreach (Employee e in allEmployees)
+                {
+                    if (userEmail == e.EmployeeEmail)
+                    {
+                        currentUser = e;
+                    }
+                }
+
+                Session["EmployeeID"] = currentUser.EmployeeID;
+                me = db.Employees.Find(Convert.ToInt32(Session["EmployeeID"]));
+            }
+
+            ViewBag.MyName = me.EmployeeName;
+            ViewBag.MyEmail = me.EmployeeEmail;
+            ViewBag.MyPosition = me.Position;
+            ViewBag.MyInterest = me.Interest1;
+            ViewBag.MyCuisine = me.Cuisine1;
+            ViewBag.MyCompany = me.Company.CompanyName;
+
+
+            return View();
+        }
+
         public ActionResult MyProfile(Employee e)
         {
             EmployeesController ec = new EmployeesController();
@@ -123,7 +162,7 @@ namespace AzureMiddayMingle.Controllers
                 for (int i = 0; i < o["response"]["venues"].Count(); i++)
                 {
                     string input = o["response"]["venues"][i]["name"].ToString();
-                    restaurants = restaurants + ", " + input;
+                    restaurants = restaurants +  "\n" + input;
                 }
 
                 ViewBag.SuggestedRestaurants = restaurants;
@@ -143,7 +182,7 @@ namespace AzureMiddayMingle.Controllers
                 for (int i = 0; i < o["response"]["venues"].Count(); i++)
                 {
                     string input = o["response"]["venues"][i]["name"].ToString();
-                    restaurants = restaurants + ", " + input;
+                    restaurants = restaurants + "\n" + input;
                 }
 
                 ViewBag.SuggestedRestaurants = restaurants;
@@ -163,7 +202,7 @@ namespace AzureMiddayMingle.Controllers
                 for (int i = 0; i < o["response"]["venues"].Count(); i++)
                 {
                     string input = o["response"]["venues"][i]["name"].ToString();
-                    restaurants = restaurants + ", " +  input;
+                    restaurants = restaurants + "\n" + input;
                 }
 
                 ViewBag.SuggestedRestaurants = restaurants;
@@ -184,7 +223,7 @@ namespace AzureMiddayMingle.Controllers
                 for (int i = 0; i < o["response"]["venues"].Count(); i++)
                 {
                     string input = o["response"]["venues"][i]["name"].ToString();
-                    restaurants = restaurants + ", " + input;
+                    restaurants = restaurants + "\n" + input;
                 }
 
                 ViewBag.SuggestedRestaurants = restaurants;
@@ -205,7 +244,7 @@ namespace AzureMiddayMingle.Controllers
                 for (int i = 0; i < o["response"]["venues"].Count(); i++)
                 {
                     string input = o["response"]["venues"][i]["name"].ToString();
-                    restaurants = restaurants + ", " + input;
+                    restaurants = restaurants + "\n" + input;
                 }
 
                 ViewBag.SuggestedRestaurants = restaurants;

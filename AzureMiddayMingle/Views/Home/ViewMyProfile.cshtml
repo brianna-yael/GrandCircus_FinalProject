@@ -1,0 +1,54 @@
+﻿
+@{
+    ViewBag.Title = "ViewMyProfile";
+}
+
+<h2>My Profile</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Employee Name
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Position
+        </th>
+        <th>
+            Interest
+        </th>
+        <th>
+            Cuisine
+        </th>
+        <th>
+            Company Name
+        </th>
+        <th></th>
+    </tr>
+        <tr>
+            <td>
+                @ViewBag.MyName
+            </td>
+            <td>
+                @ViewBag.MyEmail
+            </td>
+            <td>
+                @ViewBag.MyPosition
+            </td>
+            <td>
+                @ViewBag.MyInterest
+            </td>
+            <td>
+                @ViewBag.MyCuisine
+            </td>
+            <td>
+                @ViewBag.MyCompany
+            </td>
+
+        </tr>
+
+</table>
+
