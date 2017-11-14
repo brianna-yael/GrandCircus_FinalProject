@@ -1,61 +1,70 @@
-﻿
-@{
-    ViewBag.Title = "ViewMyProfile";
-}
+﻿<!DOCTYPE html>
+<html>
+<head>
 
-<h2>My Profile</h2>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
+    @{
+        ViewBag.Title = "ViewMyProfile";
+    }
 
-<table class="table">
-    <tr>
-        <th>
-            Employee Name
-        </th>
-        <th>
-            Email
-        </th>
-        <th>
-            Position
-        </th>
-        <th>
-            Interest
-        </th>
-        <th>
-            Cuisine
-        </th>
-        <th>
-            Company Name
-        </th>
-        <th></th>
-    </tr>
-        <tr>
-            <td>
-                @ViewBag.MyName
-            </td>
-            <td>
-                @ViewBag.MyEmail
-            </td>
-            <td>
-                @ViewBag.MyPosition
-            </td>
-            <td>
-                @ViewBag.MyInterest
-            </td>
-            <td>
-                @ViewBag.MyCuisine
-            </td>
-            <td>
-                @ViewBag.MyCompany
-            </td>
+    <style>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+            font-family: arial;
+        }
 
-        </tr>
+        .title {
+            color: grey;
+            font-size: 18px;
+        }
 
-</table>
+        button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
 
-</br>
-<center>
-    <a href="http://azuremiddaymingle.azurewebsites.net/Home/About">About |</a>
-    <a href="http://azuremiddaymingle.azurewebsites.net/Home/CreateProfile">Create Profile |</a>
-    <a href="http://azuremiddaymingle.azurewebsites.net/Home/Suggestions">Suggestions</a>
-</center>
+        a {
+            text-decoration: none;
+            font-size: 22px;
+            color: black;
+        }
 
+            button:hover, a:hover {
+                opacity: 0.7;
+            }
+    </style>
+</head>
+<body>
+
+    <h2 style="text-align:center">User Profile Card</h2>
+
+    <div class="card">
+        <img src="/w3images/team2.jpg" alt="John" style="width:100%">
+        <h1>@ViewBag.MyName</h1>
+        <p class="title">@ViewBag.MyPosition</p>
+        <p>@ViewBag.MyEmail</p>
+        <p class="interest">@ViewBag.MyInterest</p>
+        <p class="food">@ViewBag.MyCuisine</p>
+        <div style="margin: 24px 0;">
+            <a href="#"><i class="fa fa-dribbble"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+        </div>
+        <p><button>Contact</button></p>
+    </div>
+
+</body>
+</html>

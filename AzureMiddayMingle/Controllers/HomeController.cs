@@ -23,7 +23,7 @@ namespace AzureMiddayMingle.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "About Midday Mingle";
+            ViewBag.Message = "About those who brought you Midday Mingle";
 
             return View();
         }
