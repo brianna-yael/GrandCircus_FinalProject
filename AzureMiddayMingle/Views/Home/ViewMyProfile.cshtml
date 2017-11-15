@@ -48,15 +48,15 @@
 </head>
 <body>
 
-    <h2 style="text-align:center">User Profile Card</h2>
+    <h2 style="text-align:center"></h2>
 
     <div class="card">
-        <img src="/w3images/team2.jpg" alt="John" style="width:100%">
+        <img src="/w3images/team2.jpg" style="width:100%">
         <h1>@ViewBag.MyName</h1>
-        <p class="title">@ViewBag.MyPosition</p>
+        <p class="title">@ViewBag.MyPosition at @ViewBag.MyCompant</p>
         <p>@ViewBag.MyEmail</p>
-        <p class="interest">@ViewBag.MyInterest</p>
-        <p class="food">@ViewBag.MyCuisine</p>
+        <p class="interest">Interest include @ViewBag.MyInterest</p>
+        <p class="food">Favorite cusine type is @ViewBag.MyCuisine</p>
         <div style="margin: 24px 0;">
             <a href="#"><i class="fa fa-dribbble"></i></a>
             <a href="#"><i class="fa fa-twitter"></i></a>
