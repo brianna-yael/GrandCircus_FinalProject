@@ -11,6 +11,7 @@ using System.Net;
 using System.IO;
 using Newtonsoft.Json.Linq;
 using System.Net.Http;
+using System.Globalization;
 
 namespace AzureMiddayMingle.Controllers
 {
@@ -94,7 +95,7 @@ namespace AzureMiddayMingle.Controllers
             ec.Create(e);
 
             MiddayMingleAzureEntities db = new MiddayMingleAzureEntities();
-            
+
             Employee me = db.Employees.ToList().Last();
             Session["EmployeeID"] = me.EmployeeID;
             Session["MatchIndex"] = 1;
@@ -123,17 +124,17 @@ namespace AzureMiddayMingle.Controllers
                 Employee emp = allEmployees.ElementAt(i);
                 if ((emp.CompanyID == e.CompanyID) && (emp.Interest1 == e.Interest1) && (emp.Cuisine1 == e.Cuisine1) && (emp.EmployeeID != e.EmployeeID))
                 {
-                    Session["MatchIndex"] = i+1;
+                    Session["MatchIndex"] = i + 1;
                     Console.WriteLine(Session["MatchIndex"]);
 
                     myMatch = emp;
                     return myMatch;
-                }  
-                
+                }
+
             }
 
             return null;
-            
+
         }
 
         public ActionResult Logoff()
@@ -185,12 +186,12 @@ namespace AzureMiddayMingle.Controllers
                 StreamReader rd = new StreamReader(response.GetResponseStream());
                 String ApiText = rd.ReadToEnd();
                 JObject o = JObject.Parse(ApiText);
-                string restaurants = string.Empty;
+                string[] restaurants = new string[o["response"]["venues"].Count()];
 
                 for (int i = 0; i < o["response"]["venues"].Count(); i++)
                 {
                     string input = o["response"]["venues"][i]["name"].ToString();
-                    restaurants = restaurants +  "\n" + input;
+                    restaurants[i] = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(input);
                 }
 
                 ViewBag.SuggestedRestaurants = restaurants;
@@ -205,12 +206,12 @@ namespace AzureMiddayMingle.Controllers
                 StreamReader rd = new StreamReader(response.GetResponseStream());
                 String ApiText = rd.ReadToEnd();
                 JObject o = JObject.Parse(ApiText);
-                string restaurants = string.Empty;
+                string[] restaurants = new string[o["response"]["venues"].Count()];
 
                 for (int i = 0; i < o["response"]["venues"].Count(); i++)
                 {
                     string input = o["response"]["venues"][i]["name"].ToString();
-                    restaurants = restaurants + "\n" + input;
+                    restaurants[i] = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(input);
                 }
 
                 ViewBag.SuggestedRestaurants = restaurants;
@@ -225,12 +226,12 @@ namespace AzureMiddayMingle.Controllers
                 StreamReader rd = new StreamReader(response.GetResponseStream());
                 String ApiText = rd.ReadToEnd();
                 JObject o = JObject.Parse(ApiText);
-                string restaurants = string.Empty;
+                string[] restaurants = new string[o["response"]["venues"].Count()];
 
                 for (int i = 0; i < o["response"]["venues"].Count(); i++)
                 {
                     string input = o["response"]["venues"][i]["name"].ToString();
-                    restaurants = restaurants + "\n" + input;
+                    restaurants[i] = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(input);
                 }
 
                 ViewBag.SuggestedRestaurants = restaurants;
@@ -246,12 +247,12 @@ namespace AzureMiddayMingle.Controllers
                 StreamReader rd = new StreamReader(response.GetResponseStream());
                 String ApiText = rd.ReadToEnd();
                 JObject o = JObject.Parse(ApiText);
-                string restaurants = string.Empty;
+                string[] restaurants = new string[o["response"]["venues"].Count()];
 
                 for (int i = 0; i < o["response"]["venues"].Count(); i++)
                 {
                     string input = o["response"]["venues"][i]["name"].ToString();
-                    restaurants = restaurants + "\n" + input;
+                    restaurants[i] = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(input);
                 }
 
                 ViewBag.SuggestedRestaurants = restaurants;
@@ -267,12 +268,12 @@ namespace AzureMiddayMingle.Controllers
                 StreamReader rd = new StreamReader(response.GetResponseStream());
                 String ApiText = rd.ReadToEnd();
                 JObject o = JObject.Parse(ApiText);
-                string restaurants = string.Empty;
+                string[] restaurants = new string[o["response"]["venues"].Count()];
 
                 for (int i = 0; i < o["response"]["venues"].Count(); i++)
                 {
                     string input = o["response"]["venues"][i]["name"].ToString();
-                    restaurants = restaurants + "\n" + input;
+                    restaurants[i] = CultureInfo.CurrentCulture.TextInfo.ToTitleCase(input);
                 }
 
                 ViewBag.SuggestedRestaurants = restaurants;

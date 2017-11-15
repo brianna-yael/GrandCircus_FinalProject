@@ -76,9 +76,12 @@
 
     
 
-    <h2>You should check out these restaurants for lunch together:</h2>
-    <h4>@ViewBag.SuggestedRestaurants </h4>
-    
+    <h2>You should check out these restaurants for lunch:</h2>
+    @foreach (string restaurants in ViewBag.SuggestedRestaurants)
+    {
+        @Html.Label(restaurants);
+        <br />
+    }
 
     </br>
     <center>
