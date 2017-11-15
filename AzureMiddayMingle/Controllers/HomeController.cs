@@ -66,6 +66,8 @@ namespace AzureMiddayMingle.Controllers
 
                 Session["EmployeeID"] = currentUser.EmployeeID;
                 me = db.Employees.Find(Convert.ToInt32(Session["EmployeeID"]));
+                Session["MatchIndex"] = 1;
+
             }
 
             ViewBag.MyName = me.EmployeeName;
@@ -92,6 +94,8 @@ namespace AzureMiddayMingle.Controllers
 
             Employee me = db.Employees.ToList().Last();
             Session["EmployeeID"] = me.EmployeeID;
+            Session["MatchIndex"] = 1;
+
             return View(employees.ToList());
         }
 
@@ -103,17 +107,29 @@ namespace AzureMiddayMingle.Controllers
             //Finding employee match
             List<Employee> allEmployees = db.Employees.ToList();
             Employee myMatch = null;
-            foreach (Employee emp in allEmployees)
+
+            for (int i = Convert.ToInt32(Session["MatchIndex"]); i < allEmployees.Count(); i++)
             {
+                Employee emp = allEmployees.ElementAt(i);
                 if ((emp.CompanyID == e.CompanyID) && (emp.Interest1 == e.Interest1) && (emp.Cuisine1 == e.Cuisine1) && (emp.EmployeeID != e.EmployeeID))
                 {
+                    Session["MatchIndex"] = i+1;
+                    Console.WriteLine(Session["MatchIndex"]);
+
                     myMatch = emp;
                     return myMatch;
-                }              
+                }  
+                
             }
 
             return null;
             
+        }
+
+        public ActionResult Logoff()
+        {
+            Session["EmployeeID"] = null;
+            return View("Login");
         }
 
         public ActionResult Suggestions()
