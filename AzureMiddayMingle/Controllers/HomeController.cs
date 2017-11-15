@@ -70,13 +70,20 @@ namespace AzureMiddayMingle.Controllers
 
             }
 
-            ViewBag.MyName = me.EmployeeName;
-            ViewBag.MyEmail = me.EmployeeEmail;
-            ViewBag.MyPosition = me.Position;
-            ViewBag.MyInterest = me.Interest1;
-            ViewBag.MyCuisine = me.Cuisine1;
-            ViewBag.MyCompany = me.Company.CompanyName;
-
+            if (me == null)
+            {
+                ViewBag.MyName = "Please log in or create a profile first.";
+                Session["EmployeeID"] = null;
+            }
+            else
+            {
+                ViewBag.MyName = me.EmployeeName;
+                ViewBag.MyEmail = me.EmployeeEmail;
+                ViewBag.MyPosition = me.Position;
+                ViewBag.MyInterest = me.Interest1;
+                ViewBag.MyCuisine = me.Cuisine1;
+                ViewBag.MyCompany = me.Company.CompanyName;
+            }
 
             return View();
         }
@@ -87,16 +94,19 @@ namespace AzureMiddayMingle.Controllers
             ec.Create(e);
 
             MiddayMingleAzureEntities db = new MiddayMingleAzureEntities();
-
-            var employees = from f in db.Employees
-                            where f.EmployeeEmail.Contains(e.EmployeeEmail)
-                            select f;
-
+            
             Employee me = db.Employees.ToList().Last();
             Session["EmployeeID"] = me.EmployeeID;
             Session["MatchIndex"] = 1;
 
-            return View(employees.ToList());
+            ViewBag.MyName = me.EmployeeName;
+            ViewBag.MyEmail = me.EmployeeEmail;
+            ViewBag.MyPosition = me.Position;
+            ViewBag.MyInterest = me.Interest1;
+            ViewBag.MyCuisine = me.Cuisine1;
+            ViewBag.MyCompany = me.Company.CompanyName;
+
+            return View("ViewMyProfile");
         }
 
         public Employee GetEmployeeMatch()
@@ -129,6 +139,7 @@ namespace AzureMiddayMingle.Controllers
         public ActionResult Logoff()
         {
             Session["EmployeeID"] = null;
+            Session["MatchIndex"] = null;
             return View("Login");
         }
 
@@ -141,7 +152,7 @@ namespace AzureMiddayMingle.Controllers
             Employee myMatch = null;
             if (e == null)
             {
-                ViewBag.Error = "You must make a profile to find your suggestions.";
+                ViewBag.MatchName = "Sorry, You must make a profile first or log in to find your suggestions.";
                 return View();
             }
 

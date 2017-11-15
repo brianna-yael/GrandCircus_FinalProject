@@ -2,7 +2,7 @@
     ViewBag.Title = "Suggestions";
 }
 <h1>@ViewBag.Title</h1>
-<h4>@ViewBag.Error</h4>
+
 <h3>@ViewBag.Message</h3>
 
 <!DOCTYPE html>
@@ -71,25 +71,22 @@
             <a href="#"><i class="fa fa-facebook"></i></a>
         </div>
         <p><button>Contact</button></p>
+        <p><button type="button" onclick="location.href='@Url.Action("Suggestions", "Home")'">Next Match</button></p>
     </div>
+
+    
+
+    <h2>You should check out these restaurants for lunch together:</h2>
+    <h4>@ViewBag.SuggestedRestaurants </h4>
+    
+
+    </br>
+    <center>
+        <a href="http://azuremiddaymingle.azurewebsites.net/Home/About">About |</a>
+        <a href="http://azuremiddaymingle.azurewebsites.net/Home/CreateProfile">Create Profile |</a>
+        <a href="http://azuremiddaymingle.azurewebsites.net/Home/Suggestions">Suggestions</a>
+    </center>
 
 </body>
 </html>
 
-<h2>You should check out these restaurants for lunch together:</h2>
-<h4>@ViewBag.SuggestedRestaurants </h4>
-<button class="btn" type="button" onclick="location.href='@Url.Action("Suggestions", "Home")'">Next Match</button>
-@*<nav aria-label="...">
-    <ul class="pager">
-        <li><a href="#">Previous</a></li>
-        <li><a href="/Home/Suggestions">Next</a></li>
-    </ul>
-</nav>*@
-
-</br>
-<center>
-    <a href="http://azuremiddaymingle.azurewebsites.net/Home/About">About |</a>
-    <a href="http://azuremiddaymingle.azurewebsites.net/Home/CreateProfile">Create Profile |</a>
-    <a href="http://azuremiddaymingle.azurewebsites.net/Home/Suggestions">Suggestions</a>
-</center>
-@* Random generator for opposite matches. To generate different matches instead of same person each time. *@
