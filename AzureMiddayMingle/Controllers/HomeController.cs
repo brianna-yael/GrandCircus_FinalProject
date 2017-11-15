@@ -125,12 +125,9 @@ namespace AzureMiddayMingle.Controllers
                 if ((emp.CompanyID == e.CompanyID) && (emp.Interest1 == e.Interest1) && (emp.Cuisine1 == e.Cuisine1) && (emp.EmployeeID != e.EmployeeID))
                 {
                     Session["MatchIndex"] = i + 1;
-                    Console.WriteLine(Session["MatchIndex"]);
-
                     myMatch = emp;
                     return myMatch;
                 }
-
             }
 
             return null;

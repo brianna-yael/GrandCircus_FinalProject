@@ -22,11 +22,19 @@
             margin: auto;
             text-align: center;
             font-family: arial;
+            float: left;
+            padding: 20px;
         }
-
+        .sug{
+            float:right;
+        }
         .title {
             color: grey;
             font-size: 18px;
+        }
+        .links{
+            float: left;
+            padding-top: 20px;
         }
 
         button {
@@ -75,16 +83,16 @@
     </div>
 
     
-
+    <div class="sug">
     <h2>You should check out these restaurants for lunch:</h2>
     @foreach (string restaurants in ViewBag.SuggestedRestaurants)
     {
         @Html.Label(restaurants);
         <br />
     }
-
+        </div>
     </br>
-    <center>
+    <center class="links">
         <a href="http://azuremiddaymingle.azurewebsites.net/Home/About">About |</a>
         <a href="http://azuremiddaymingle.azurewebsites.net/Home/CreateProfile">Create Profile |</a>
         <a href="http://azuremiddaymingle.azurewebsites.net/Home/Suggestions">Suggestions</a>
