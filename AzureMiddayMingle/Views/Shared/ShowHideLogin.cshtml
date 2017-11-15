@@ -1,0 +1,20 @@
+﻿@if (Session["EmployeeID"] != null)
+{
+    
+    {
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+            <li>
+                @Html.ActionLink("Logoff", "Logoff", "Home")
+            </li>
+        </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Login", "Login", "Home")</li>
+        <li>@Html.ActionLink("Create Profile", "CreateProfile", "Home")</li>
+    </ul>
+}
+
