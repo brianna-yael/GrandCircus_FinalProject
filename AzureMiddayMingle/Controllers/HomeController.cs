@@ -145,6 +145,7 @@ namespace AzureMiddayMingle.Controllers
         {
             MiddayMingleAzureEntities db = new MiddayMingleAzureEntities();
             Employee e = db.Employees.Find(Convert.ToInt32(Session["EmployeeID"]));
+            ViewBag.SuggestedRestaurants = null;
 
             //Finding employee match
             Employee myMatch = null;

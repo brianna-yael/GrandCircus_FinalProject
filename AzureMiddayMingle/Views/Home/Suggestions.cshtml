@@ -23,7 +23,7 @@
             text-align: center;
             font-family: arial;
             float: left;
-            padding: 20px;
+            padding-bottom: 20px;
         }
         .sug{
             float:right;
@@ -84,14 +84,20 @@
 
     
     <div class="sug">
+
     <h2>You should check out these restaurants for lunch:</h2>
-    @foreach (string restaurants in ViewBag.SuggestedRestaurants)
-    {
-        @Html.Label(restaurants);
-        <br />
-    }
+    
+        @foreach (string restaurants in ViewBag.SuggestedRestaurants)
+        {
+            @Html.Label(restaurants);
+            <br />
+        }
+    
         </div>
-    </br>
+  
+  
+
+
     <center class="links">
         <a href="http://azuremiddaymingle.azurewebsites.net/Home/About">About |</a>
         <a href="http://azuremiddaymingle.azurewebsites.net/Home/CreateProfile">Create Profile |</a>

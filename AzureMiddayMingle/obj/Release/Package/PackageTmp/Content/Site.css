@@ -1,13 +1,19 @@
 ﻿body {
     padding-top: 50px;
     padding-bottom: 20px;
+    margin-left: 10%;
+    margin-right: 10%;
 }
 
 /* Set padding to keep content from hitting the edges */
-.body-content {
-    padding-left: 15px;
-    padding-right: 15px;
+.row {
+    padding-left: 2%;
+    padding-right: 2%;
+    padding-bottom: 30px;
 }
+
+
+
 
 /* Override the default bootstrap behavior where horizontal description lists 
    will truncate terms that are too long to fit in the left column 

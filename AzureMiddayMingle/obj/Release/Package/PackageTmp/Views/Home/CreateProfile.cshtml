@@ -8,7 +8,7 @@
 <form id="form" name="form" method="post" action="MyProfile">
     <p>
         <label for="EmployeeName">Name</label>
-        <input type="text" name="EmployeeName" id="name" />
+        <input type="text" name="EmployeeName" id="name" required/>
         <label for="CompanyName"> Company</label>
         <select name="CompanyID" id="company">
             <option value="1">Amway</option>
@@ -19,16 +19,16 @@
     </p>
     <p>
         <label for="Position">Position</label>
-        <input type="text" name="Position" id="position" />
+        <input type="text" name="Position" id="position" required/>
     </p>
     <p>
         <label for="EmployeeEmail">Email</label>
-        <input type="text" name="EmployeeEmail" id="Email" />
+        <input type="email" name="EmployeeEmail" id="Email" required/>
     </p>
     <p>
         <label>
             Interests (Choose 1)<br />
-            <input type="radio" name="Interest1" value="Music" id="Interests" />
+            <input type="radio" name="Interest1" value="Music" id="Interests" required/>
             Music
         </label>
         <br />
@@ -56,7 +56,7 @@
         <p>
             <label>
                 Cuisine (Choose 1)<br />
-                <input type="radio" name="Cuisine1" value="Ethiopian" id="Cuisine" />
+                <input type="radio" name="Cuisine1" value="Ethiopian" id="Cuisine" required/>
                 Ethiopian
             </label>
             <br />

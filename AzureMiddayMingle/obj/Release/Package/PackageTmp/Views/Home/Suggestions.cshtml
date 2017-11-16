@@ -2,23 +2,108 @@
     ViewBag.Title = "Suggestions";
 }
 <h1>@ViewBag.Title</h1>
-<h4>@ViewBag.Error</h4>
+
 <h3>@ViewBag.Message</h3>
 
+<!DOCTYPE html>
+<html>
+<head>
 
-<h2>@ViewBag.MatchName</h2>
-<h4>@ViewBag.MatchPosition</h4>
-<h4>@ViewBag.MatchInterest</h4>
-<h4>@ViewBag.MatchCuisine</h4>
-<h4>@ViewBag.MatchEmail</h4>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
 
-<h2>You should check out these restaurants for lunch together:</h2>
-<h4>@ViewBag.SuggestedRestaurants </h4>
+    @{
+        ViewBag.Title = "ViewMyProfile";
+    }
 
-</br>
-<center>
-    <a href="http://azuremiddaymingle.azurewebsites.net/Home/About">About |</a>
-    <a href="http://azuremiddaymingle.azurewebsites.net/Home/CreateProfile">Create Profile |</a>
-    <a href="http://azuremiddaymingle.azurewebsites.net/Home/Suggestions">Suggestions</a>
-</center>
-@* Random generator for opposite matches. To generate different matches instead of same person each time. *@
+    <style>
+        .card {
+            box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+            max-width: 300px;
+            margin: auto;
+            text-align: center;
+            font-family: arial;
+            float: left;
+            padding-bottom: 20px;
+        }
+        .sug{
+            float:right;
+        }
+        .title {
+            color: grey;
+            font-size: 18px;
+        }
+        .links{
+            float: left;
+            padding-top: 20px;
+        }
+
+        button {
+            border: none;
+            outline: 0;
+            display: inline-block;
+            padding: 8px;
+            color: white;
+            background-color: #000;
+            text-align: center;
+            cursor: pointer;
+            width: 100%;
+            font-size: 18px;
+        }
+
+        a {
+            text-decoration: none;
+            font-size: 22px;
+            color: black;
+        }
+
+            button:hover, a:hover {
+                opacity: 0.7;
+            }
+    </style>
+</head>
+<body>
+
+    <h2 style="text-align:center"></h2>
+
+    <div class="card">
+        <img src="/w3images/team2.jpg" style="width:100%">
+        <h1>@ViewBag.MatchName</h1>
+        <p class="title">@ViewBag.MatchPosition</p>
+        <p>@ViewBag.MatchEmail</p>
+        <p class="interest"> @ViewBag.MatchInterest</p>
+        <p class="food">@ViewBag.MatchCuisine</p>
+        <div style="margin: 24px 0;">
+            <a href="#"><i class="fa fa-dribbble"></i></a>
+            <a href="#"><i class="fa fa-twitter"></i></a>
+            <a href="#"><i class="fa fa-linkedin"></i></a>
+            <a href="#"><i class="fa fa-facebook"></i></a>
+        </div>
+        <p><button>Contact</button></p>
+        <p><button type="button" onclick="location.href='@Url.Action("Suggestions", "Home")'">Next Match</button></p>
+    </div>
+
+    
+    <div class="sug">
+
+    <h2>You should check out these restaurants for lunch:</h2>
+    
+        @foreach (string restaurants in ViewBag.SuggestedRestaurants)
+        {
+            @Html.Label(restaurants);
+            <br />
+        }
+    
+        </div>
+  
+  
+
+
+    <center class="links">
+        <a href="http://azuremiddaymingle.azurewebsites.net/Home/About">About |</a>
+        <a href="http://azuremiddaymingle.azurewebsites.net/Home/CreateProfile">Create Profile |</a>
+        <a href="http://azuremiddaymingle.azurewebsites.net/Home/Suggestions">Suggestions</a>
+    </center>
+
+</body>
+</html>
+
